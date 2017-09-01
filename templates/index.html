@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+<body>
+	<div class="header">
+			<span>
+				留言簿
+			</span>
+		</div>
+	<div id="main">
+		<div class="input">
+			<div class="input_main">
+				<div>
+					<p>请尽情留言吧：</p>
+				</div>
+				<div class="name">
+					<span>姓名</span>
+					<input type="text" name="uname">
+				</div>
+				<div class="content">
+					<span>内容</span>
+					<textarea></textarea>
+				</div>
+				<button id="submit">提交</button>
+			</div>
+		</div>
+		<div class="output">
+			<div class="liuyan">
+				<p>留言历史信息</p>
+				<div class="liuyan_content">
+					<ul>
+						<li>
+							<div>
+								<span>江小鱼</span>
+								<span>留言于（1231231232）</span>
+							</div>
+							<p>阿萨双打啊舒服舒服递四方速递</p>
+						</li>
+						<li>
+							<div>
+								<span>江小鱼</span>
+								<span>留言于（1231231232）</span>
+							</div>
+							<p>阿萨双打啊舒服舒服递四方速递</p>
+						</li>
+						<li>
+							<div>
+								<span>江小鱼</span>
+								<span>留言于（1231231232）</span>
+							</div>
+							<p>阿萨双打啊舒服舒服递四方速递</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="footer"></div>
+	<script type="text/javascript" src="/static/js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("#submit").click(function(){
+			var name=$(".name>input").val();
+			var content=$(".content>textarea").val()
+			console.log(name);
+			console.log(content)
+			data={"uname":name,"content":content}
+			$.ajax({
+				url:"http://127.0.0.1:8000/setData/",
+				data:data,
+				type:"POST",
+				success(reg){
+					console.log(reg)
+				}
+			})
+		})
+	</script>
+</body>
+</html>
