@@ -13,7 +13,7 @@ body{
 	margin-top:50px;
 }
 .header,.footer{
-	background-color: blue;
+	background-color: rgb(0,64,128);
 	height: 50px;
 }
 .header{
@@ -38,7 +38,7 @@ body{
 .input{
 	padding-left:30px;
 	padding-bottom: 10px;
-	background-color: rgb(0,200,0);
+	background-color: rgb(120,184,248);
 }
 .input:before{
 	display:table;
@@ -83,5 +83,5 @@ body{
 	padding-bottom:5px;
 }
 .liuyan_content>ul>li>p{
-	background-color: rgb(100,100,0);
+	background-color: rgb(219,219,255);
 }

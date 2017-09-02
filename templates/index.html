@@ -32,36 +32,64 @@
 				<p>留言历史信息</p>
 				<div class="liuyan_content">
 					<ul>
-						<li>
-							<div>
-								<span>江小鱼</span>
-								<span>留言于（1231231232）</span>
-							</div>
-							<p>阿萨双打啊舒服舒服递四方速递</p>
-						</li>
-						<li>
-							<div>
-								<span>江小鱼</span>
-								<span>留言于（1231231232）</span>
-							</div>
-							<p>阿萨双打啊舒服舒服递四方速递</p>
-						</li>
-						<li>
-							<div>
-								<span>江小鱼</span>
-								<span>留言于（1231231232）</span>
-							</div>
-							<p>阿萨双打啊舒服舒服递四方速递</p>
-						</li>
+						<!--<li>-->
+							<!--<div>-->
+								<!--<span>江小鱼</span>-->
+								<!--<span>留言于（1231231232）</span>-->
+							<!--</div>-->
+							<!--<p>阿萨双打啊舒服舒服递四方速递</p>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<div>-->
+								<!--<span>江小鱼</span>-->
+								<!--<span>留言于（1231231232）</span>-->
+							<!--</div>-->
+							<!--<p>阿萨双打啊舒服舒服递四方速递</p>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<div>-->
+								<!--<span>江小鱼</span>-->
+								<!--<span>留言于（1231231232）</span>-->
+							<!--</div>-->
+							<!--<p>阿萨双打啊舒服舒服递四方速递</p>-->
+						<!--</li>-->
 					</ul>
 				</div>
 			</div>
 		</div>
 		
 	</div>
-	<div class="footer"></div>
+	<!--<div class="footer"></div>-->
 	<script type="text/javascript" src="/static/js/jquery-1.11.3.js"></script>
 	<script type="text/javascript">
+		$(function(){
+			init()
+		})
+		function init(){
+		    $.ajax({
+			  url:"http://127.0.0.1:8000/getData/",
+			  success(reg){
+			      var html="";
+			      for(var i=0;i<reg.data.length;i++){
+			          var name=reg.data[i].name;
+			          var dateTime=reg.data[i].dateTime;
+			          dateTime=new Date(parseInt(dateTime)*1000)
+			          var content=reg.data[i].content;
+//			          console.log(name,dateTime,content)
+					  html+=`
+					  <li>
+							<div>
+								<span>${name}</span>
+								<span>${dateTime}</span>
+							</div>
+							<p>${content}</p>
+						</li>
+					  `
+					  $(".liuyan_content>ul").html(html)
+				  }
+			  }
+		  })
+		}
 		$("#submit").click(function(){
 			var name=$(".name>input").val();
 			var content=$(".content>textarea").val()
@@ -74,6 +102,7 @@
 				type:"POST",
 				success(reg){
 					console.log(reg)
+					init()
 				}
 			})
 		})
